@@ -16,7 +16,7 @@ namespace ASP_Final_System
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Products", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Dashboard", action = "Main", id = UrlParameter.Optional }
             );
         }
     }
