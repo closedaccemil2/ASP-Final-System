@@ -21,7 +21,7 @@ namespace ASP_Final_System.Controllers
         }
 
         // GET: Products/Details/5
-        public ActionResult Details(int? id)
+        /*public ActionResult Index(int? id)
         {
             if (id == null)
             {
@@ -33,20 +33,11 @@ namespace ASP_Final_System.Controllers
                 return HttpNotFound();
             }
             return View(products);
-        }
-
-        // GET: Products/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
+        }*/
         // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Price")] Products products)
+        public ActionResult Index([Bind(Include = "Id,Name,Price")] Products products)
         {
             if (ModelState.IsValid)
             {
