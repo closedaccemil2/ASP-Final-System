@@ -143,6 +143,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Activities.cs">
+      <DependentUpon>SystemModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Clients.cs">
       <DependentUpon>SystemModel.tt</DependentUpon>
     </Compile>

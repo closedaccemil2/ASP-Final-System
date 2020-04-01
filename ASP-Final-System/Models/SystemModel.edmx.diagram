@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="SystemModel.Products" Width="1.5" PointX="1.375" PointY="1.25" />
         <EntityTypeShape EntityType="SystemModel.Providers" Width="1.5" PointX="3.375" PointY="1.25" />
         <EntityTypeShape EntityType="SystemModel.Clients" Width="1.5" PointX="5.375" PointY="1.25" />
+        <EntityTypeShape EntityType="SystemModel.Activities" Width="1.5" PointX="7.375" PointY="1.25" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

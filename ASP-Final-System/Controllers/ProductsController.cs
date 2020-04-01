@@ -20,21 +20,6 @@ namespace ASP_Final_System.Controllers
             return View(Database.Products.ToList());
         }
 
-        // GET: Products/Details/5
-        /*public ActionResult Index(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Products products = Database.Products.Find(id);
-            if (products == null)
-            {
-                return HttpNotFound();
-            }
-            return View(products);
-        }*/
-        // POST: Products/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index([Bind(Include = "Id,Name,Price")] Products products)
@@ -45,6 +30,9 @@ namespace ASP_Final_System.Controllers
                 Database.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            // Activities Saved to the Database
+            ViewBag.Element_ID = Request.Form["Id"];
 
             return View(products);
         }
@@ -61,6 +49,9 @@ namespace ASP_Final_System.Controllers
             {
                 return HttpNotFound();
             }
+            // Activities Saved to the Database
+            ViewBag.Element_ID = id;
+
             return View(products);
         }
 
@@ -114,5 +105,8 @@ namespace ASP_Final_System.Controllers
             }
             base.Dispose(disposing);
         }
+
+       
+
     }
 }

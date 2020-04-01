@@ -28,5 +28,6 @@ namespace ASP_Final_System.Models
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<Providers> Providers { get; set; }
         public virtual DbSet<Clients> Clients { get; set; }
+        public virtual DbSet<Activities> Activities1 { get; set; }
     }
 }

@@ -1,4 +1,8 @@
-﻿body {
+﻿:root {
+    --main-color: #3498db;
+}
+
+body {
     width: 100%;
     height: 100vh;
     box-sizing: border-box;
@@ -27,7 +31,7 @@ nav {
     position: sticky;
     display: flex;
     justify-content: space-between;
-    background-color: #2c3aaf;
+    background-color: var(--main-color);
     color: #F2F2F2;
     margin-bottom: 40px;
 }
@@ -55,6 +59,17 @@ a:hover {
 }
 
 /* Content */
+
+.module-title {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.item-option, .item-option:hover, .section-title {
+    color: var(--main-color);
+}
 
 .card-body h5 {
     padding-top: 20px;
