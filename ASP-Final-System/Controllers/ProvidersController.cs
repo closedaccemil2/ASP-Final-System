@@ -12,46 +12,23 @@ namespace ASP_Final_System.Controllers
 {
     public class ProvidersController : Controller
     {
-        private SystemModelContainer db = new SystemModelContainer();
+        private SystemModelContainer Database = new SystemModelContainer();
 
         // GET: Providers
         public ActionResult Index()
         {
-            return View(db.Providers.ToList());
-        }
-
-        // GET: Providers/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Providers providers = db.Providers.Find(id);
-            if (providers == null)
-            {
-                return HttpNotFound();
-            }
-            return View(providers);
+            return View(Database.Providers.ToList());
         }
 
         // GET: Providers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Providers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,RNC,Name,Phone,Email")] Providers providers)
+        public ActionResult Index([Bind(Include = "Id,RNC,Name,Phone,Email")] Providers providers)
         {
             if (ModelState.IsValid)
             {
-                db.Providers.Add(providers);
-                db.SaveChanges();
+                Database.Providers.Add(providers);
+                Database.SaveChanges();
                 return RedirectToAction("Index");
             }
 
@@ -65,7 +42,7 @@ namespace ASP_Final_System.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Providers providers = db.Providers.Find(id);
+            Providers providers = Database.Providers.Find(id);
             if (providers == null)
             {
                 return HttpNotFound();
@@ -82,8 +59,8 @@ namespace ASP_Final_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(providers).State = EntityState.Modified;
-                db.SaveChanges();
+                Database.Entry(providers).State = EntityState.Modified;
+                Database.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(providers);
@@ -96,7 +73,7 @@ namespace ASP_Final_System.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Providers providers = db.Providers.Find(id);
+            Providers providers = Database.Providers.Find(id);
             if (providers == null)
             {
                 return HttpNotFound();
@@ -109,9 +86,9 @@ namespace ASP_Final_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Providers providers = db.Providers.Find(id);
-            db.Providers.Remove(providers);
-            db.SaveChanges();
+            Providers providers = Database.Providers.Find(id);
+            Database.Providers.Remove(providers);
+            Database.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -119,7 +96,7 @@ namespace ASP_Final_System.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                Database.Dispose();
             }
             base.Dispose(disposing);
         }

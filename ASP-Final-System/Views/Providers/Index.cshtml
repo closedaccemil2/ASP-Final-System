@@ -1,51 +1,141 @@
 ﻿@model IEnumerable<ASP_Final_System.Models.Providers>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Proveedores";
 }
 
-<h2>Index</h2>
+<div class="module-title">
+    <h2>
+        Módulo de Mantenimiento - <span class="section-title">@ViewBag.Title</span>
+    </h2>
+    <div class="dropdown">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Proveedores
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="\Products/Index">Productos</a>
+            <a class="dropdown-item" href="\Clients/Index">Clientes</a>
+        </div>
+    </div>
+</div>
+<br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.RNC)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th></th>
-    </tr>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    ASP_Final_System.Models.Providers providers = new ASP_Final_System.Models.Providers();
+    <div class="row justify-content-md-center">
+        <div class="col-sm-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4>Agregar Proveedores</h4>
+                    <hr />
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.RNC)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => providers.RNC, "RNC del Proveedor:", htmlAttributes: new { @class = "control-label col-md" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => providers.RNC, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(model => providers.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => providers.Phone, "Número de Teléfono:", htmlAttributes: new { @class = "control-label col-md" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => providers.Phone, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(model => providers.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-md">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => providers.Name, "Nombre del Proveedor:", htmlAttributes: new { @class = "control-label col-md" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => providers.Name, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(model => providers.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    @Html.LabelFor(model => providers.Email, "Email del Proveedor:", htmlAttributes: new { @class = "control-label col-md" })
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => providers.Email, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                        @Html.ValidationMessageFor(model => providers.Name, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Crear" class="btn btn-outline-primary" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card bg-light">
+                <div class="card-body">
+                    <h6 class="text-secondary">Actividades</h6>
+                    <hr />
+                    <p>A simple light alert—check it out!</p>
+                </div>
+            </div>
+        </div>
+    </div>
 }
 
-</table>
+<br />
+<div class="card">
+    <table class="table table-striped">
+        <thead class="card-header">
+            <tr>
+                <th scope="col">ID Proveedor</th>
+                <th scope="col">RNC Proveedor</th>
+                <th scope="col">Nombre Proveedor</th>
+                <th scope="col">Número</th>
+                <th scope="col">Email</th>
+                <th scope="col">Opciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RNC)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Phone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Modificar", "Edit", new { id = item.Id }, new { @class = "item-option" }) |
+                            @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "item-option" })
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

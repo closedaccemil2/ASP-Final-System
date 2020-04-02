@@ -20,33 +20,9 @@ namespace ASP_Final_System.Controllers
             return View(db.Clients.ToList());
         }
 
-        // GET: Clients/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Clients clients = db.Clients.Find(id);
-            if (clients == null)
-            {
-                return HttpNotFound();
-            }
-            return View(clients);
-        }
-
-        // GET: Clients/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Clients/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,RNC,Name,Phone,Email,Category")] Clients clients)
+        public ActionResult Index([Bind(Include = "Id,RNC,Name,Phone,Email,Category")] Clients clients)
         {
             if (ModelState.IsValid)
             {

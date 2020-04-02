@@ -89,7 +89,7 @@ namespace ASP_Final_System.Controllers
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult Index(int id)
         {
             Products products = Database.Products.Find(id);
             Database.Products.Remove(products);

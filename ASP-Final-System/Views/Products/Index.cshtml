@@ -92,7 +92,8 @@
                             @Html.DisplayFor(modelItem => item.Price)
                         </td>
                         <td>
-                            @Html.ActionLink("Modificar", "Edit", new { id = item.Id }, new { @class = "item-option" }) |
+                            @Html.ActionLink("Modificar", "Edit", new { id = item.Id }, new { @class = "item-option" })
+                            |
                             @Html.ActionLink("Eliminar", "Delete", new { id = item.Id }, new { @class = "item-option" })
                         </td>
                     </tr>

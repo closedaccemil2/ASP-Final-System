@@ -6,6 +6,8 @@
 //     Manual changes to this file will be overwritten if the code is regenerated.
 // </auto-generated>
 //------------------------------------------------------------------------------
+// Modified Manually to Add Enum
+//------------------------------------------------------------------------------
 
 namespace ASP_Final_System.Models
 {
@@ -20,5 +22,11 @@ namespace ASP_Final_System.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Category { get; set; }
+    }
+
+    public enum Category
+    {
+        Regular,
+        Premium
     }
 }
