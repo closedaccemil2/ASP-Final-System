@@ -12,12 +12,11 @@ namespace ASP_Final_System.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Activities
+    public partial class Audit
     {
         public int Id { get; set; }
-        public System.DateTime Date_Modified { get; set; }
-        public string Table_Name { get; set; }
-        public string Message { get; set; }
-        public string Element_ID { get; set; }
+        public string Activity { get; set; }
+        public string ElementID { get; set; }
+        public Nullable<System.DateTime> TimeStamp { get; set; }
     }
 }

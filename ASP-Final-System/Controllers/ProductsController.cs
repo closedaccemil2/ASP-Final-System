@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ASP_Final_System.Models;
+using ASP_Final_System.ViewModel;
 
 namespace ASP_Final_System.Controllers
 {
@@ -17,7 +18,12 @@ namespace ASP_Final_System.Controllers
         // GET: Products
         public ActionResult Index()
         {
-            return View(Database.Products.ToList());
+            var Data = new SystemModels
+            {
+                Products = Database.Products.ToList(),
+                Audits = Database.Audits.ToList()
+            };
+            return View(Data);
         }
 
         [HttpPost]
@@ -30,9 +36,6 @@ namespace ASP_Final_System.Controllers
                 Database.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            // Activities Saved to the Database
-            ViewBag.Element_ID = Request.Form["Id"];
 
             return View(products);
         }
@@ -49,7 +52,7 @@ namespace ASP_Final_System.Controllers
             {
                 return HttpNotFound();
             }
-            // Activities Saved to the Database
+            // Audits Saved to the Database
             ViewBag.Element_ID = id;
 
             return View(products);

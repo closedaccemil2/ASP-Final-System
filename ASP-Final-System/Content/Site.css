@@ -83,3 +83,9 @@ a:hover {
     color: #F2F2F2;
 }
 
+.scroll-section {
+    height: 235px;
+    width: 100%;
+    overflow: hidden;
+    overflow-y: scroll;
+}

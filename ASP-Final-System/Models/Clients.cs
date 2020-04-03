@@ -13,7 +13,7 @@ namespace ASP_Final_System.Models
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Clients
     {
         public int Id { get; set; }

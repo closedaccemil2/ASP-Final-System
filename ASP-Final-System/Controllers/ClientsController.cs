@@ -7,17 +7,23 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ASP_Final_System.Models;
+using ASP_Final_System.ViewModel;
 
 namespace ASP_Final_System.Controllers
 {
     public class ClientsController : Controller
     {
-        private SystemModelContainer db = new SystemModelContainer();
+        private SystemModelContainer Database = new SystemModelContainer();
 
         // GET: Clients
         public ActionResult Index()
         {
-            return View(db.Clients.ToList());
+            var Data = new SystemModels
+            {
+                Clients = Database.Clients.ToList(),
+                Audits = Database.Audits.ToList()
+            };
+            return View(Data);
         }
 
         [HttpPost]
@@ -26,10 +32,13 @@ namespace ASP_Final_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Clients.Add(clients);
-                db.SaveChanges();
+                Database.Clients.Add(clients);
+                Database.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            // Audits Saved to the Database
+            ViewBag.ElementID = Request.Form["RNC"];
 
             return View(clients);
         }
@@ -41,7 +50,7 @@ namespace ASP_Final_System.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clients clients = db.Clients.Find(id);
+            Clients clients = Database.Clients.Find(id);
             if (clients == null)
             {
                 return HttpNotFound();
@@ -58,8 +67,8 @@ namespace ASP_Final_System.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(clients).State = EntityState.Modified;
-                db.SaveChanges();
+                Database.Entry(clients).State = EntityState.Modified;
+                Database.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(clients);
@@ -72,7 +81,7 @@ namespace ASP_Final_System.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Clients clients = db.Clients.Find(id);
+            Clients clients = Database.Clients.Find(id);
             if (clients == null)
             {
                 return HttpNotFound();
@@ -85,9 +94,9 @@ namespace ASP_Final_System.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Clients clients = db.Clients.Find(id);
-            db.Clients.Remove(clients);
-            db.SaveChanges();
+            Clients clients = Database.Clients.Find(id);
+            Database.Clients.Remove(clients);
+            Database.SaveChanges();
             return RedirectToAction("Index");
         }
 
@@ -95,7 +104,7 @@ namespace ASP_Final_System.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                Database.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ASP_Final_System.Models.Providers>
+﻿@model ASP_Final_System.ViewModel.SystemModels
 
 @{
     ViewBag.Title = "Lista de Proveedores";
@@ -85,7 +85,19 @@
                 <div class="card-body">
                     <h6 class="text-secondary">Actividades</h6>
                     <hr />
-                    <p>A simple light alert—check it out!</p>
+                    <ul class="scroll-section list-group list-group-flush text-secondary">
+                        <!-- Activities Section Logs -->
+                        @{
+                            foreach (var audit in Model.Audits)
+                            {
+                                <li class="list-group-item bg-light">
+                                    @Html.DisplayFor(modelItem => audit.Activity)
+                                    @Html.DisplayFor(modelItem => audit.ElementID)
+                                    @Html.DisplayFor(modelItem => audit.TimeStamp)
+                                </li>
+                            }
+                        }
+                    </ul>
                 </div>
             </div>
         </div>
@@ -107,7 +119,7 @@
         </thead>
         <tbody>
             @{
-                foreach (var item in Model)
+                foreach (var item in Model.Providers)
                 {
                     <tr>
                         <td>

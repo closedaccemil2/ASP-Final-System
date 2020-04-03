@@ -78,6 +78,11 @@ ADD CONSTRAINT [PK_Clients]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 
+ALTER TABLE [dbo].[Activities]
+ADD CONSTRAINT [PK_Clients]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
 -- --------------------------------------------------
 -- Creating all FOREIGN KEY constraints
 -- --------------------------------------------------

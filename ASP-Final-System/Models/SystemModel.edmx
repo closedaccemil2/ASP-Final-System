@@ -5,17 +5,14 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="SystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Storage.dbo.Activities' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="Activities">
+        <EntityType Name="Audit">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" Nullable="false" />
-          <Property Name="Date_Modified" Type="datetime" Nullable="false" />
-          <Property Name="Table_Name" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="Element_ID" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Activity" Type="varchar(max)" />
+          <Property Name="ElementID" Type="varchar(max)" />
+          <Property Name="TimeStamp" Type="date" />
         </EntityType>
         <EntityType Name="Clients">
           <Key>
@@ -47,18 +44,10 @@ warning 6002: The table/view 'Storage.dbo.Activities' does not have a primary ke
           <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityContainer Name="SystemModelStoreContainer">
+          <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Providers" EntityType="Self.Providers" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Activities" EntityType="Self.Activities" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [Activities].[Id] AS [Id], 
-    [Activities].[Date_Modified] AS [Date_Modified], 
-    [Activities].[Table_Name] AS [Table_Name], 
-    [Activities].[Message] AS [Message], 
-    [Activities].[Element_ID] AS [Element_ID]
-    FROM [dbo].[Activities] AS [Activities]</DefiningQuery>
-          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -68,7 +57,7 @@ warning 6002: The table/view 'Storage.dbo.Activities' does not have a primary ke
           <EntitySet Name="Products" EntityType="SystemModel.Products" />
           <EntitySet Name="Providers" EntityType="SystemModel.Providers" />
           <EntitySet Name="Clients" EntityType="SystemModel.Clients" />
-          <EntitySet Name="Activities1" EntityType="SystemModel.Activities" />
+          <EntitySet Name="Audits" EntityType="SystemModel.Audit" />
         </EntityContainer>
         <EntityType Name="Products">
           <Key>
@@ -99,15 +88,14 @@ warning 6002: The table/view 'Storage.dbo.Activities' does not have a primary ke
           <Property Name="Email" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Category" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
-        <EntityType Name="Activities">
+        <EntityType Name="Audit">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" />
-          <Property Name="Date_Modified" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Table_Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Element_ID" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Activity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ElementID" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TimeStamp" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -147,13 +135,12 @@ warning 6002: The table/view 'Storage.dbo.Activities' does not have a primary ke
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-          <EntitySetMapping Name="Activities1">
-            <EntityTypeMapping TypeName="SystemModel.Activities">
-              <MappingFragment StoreEntitySet="Activities">
-                <ScalarProperty Name="Element_ID" ColumnName="Element_ID" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="Table_Name" ColumnName="Table_Name" />
-                <ScalarProperty Name="Date_Modified" ColumnName="Date_Modified" />
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="SystemModel.Audit">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="ElementID" ColumnName="ElementID" />
+                <ScalarProperty Name="Activity" ColumnName="Activity" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

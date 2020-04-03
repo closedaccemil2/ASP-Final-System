@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ASP_Final_System.Models;
+using ASP_Final_System.ViewModel;
 
 namespace ASP_Final_System.Controllers
 {
@@ -17,7 +18,12 @@ namespace ASP_Final_System.Controllers
         // GET: Providers
         public ActionResult Index()
         {
-            return View(Database.Providers.ToList());
+            var Data = new SystemModels
+            {
+                Providers = Database.Providers.ToList(),
+                Audits = Database.Audits.ToList()
+            };
+            return View(Data);
         }
 
         // GET: Providers/Create
