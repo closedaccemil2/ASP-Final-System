@@ -12,6 +12,8 @@ namespace ASP_Final_System.Models
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class SystemModelContainer : DbContext
     {
@@ -29,5 +31,28 @@ namespace ASP_Final_System.Models
         public virtual DbSet<Providers> Providers { get; set; }
         public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<Audit> Audits { get; set; }
+        public virtual DbSet<Entries> Entries1 { get; set; }
+        public virtual DbSet<Stock> Stocks { get; set; }
+    
+        public virtual int StockCheck(Nullable<int> quantity, string productName, string providerName, Nullable<System.DateTime> timeStamp)
+        {
+            var quantityParameter = quantity.HasValue ?
+                new ObjectParameter("Quantity", quantity) :
+                new ObjectParameter("Quantity", typeof(int));
+    
+            var productNameParameter = productName != null ?
+                new ObjectParameter("ProductName", productName) :
+                new ObjectParameter("ProductName", typeof(string));
+    
+            var providerNameParameter = providerName != null ?
+                new ObjectParameter("ProviderName", providerName) :
+                new ObjectParameter("ProviderName", typeof(string));
+    
+            var timeStampParameter = timeStamp.HasValue ?
+                new ObjectParameter("TimeStamp", timeStamp) :
+                new ObjectParameter("TimeStamp", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StockCheck", quantityParameter, productNameParameter, providerNameParameter, timeStampParameter);
+        }
     }
 }

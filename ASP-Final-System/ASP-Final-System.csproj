@@ -140,6 +140,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
+    <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -149,10 +150,16 @@
     <Compile Include="Models\Clients.cs">
       <DependentUpon>SystemModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entries.cs">
+      <DependentUpon>SystemModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Products.cs">
       <DependentUpon>SystemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Providers.cs">
+      <DependentUpon>SystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Stock.cs">
       <DependentUpon>SystemModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SystemModel.Context.cs">
@@ -339,6 +346,9 @@
     <Content Include="Views\Clients\Edit.cshtml" />
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Dashboard\Main.cshtml" />
+    <Content Include="Views\Stocks\Delete.cshtml" />
+    <Content Include="Views\Stocks\Edit.cshtml" />
+    <Content Include="Views\Stocks\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

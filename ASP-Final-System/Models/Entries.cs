@@ -12,13 +12,10 @@ namespace ASP_Final_System.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Clients
+    public partial class Entries
     {
         public int Id { get; set; }
-        public string RNC { get; set; }
-        public string Name { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Category { get; set; }
+        public string Transaction_Desc { get; set; }
+        public Nullable<System.DateTime> TimeStamp { get; set; }
     }
 }

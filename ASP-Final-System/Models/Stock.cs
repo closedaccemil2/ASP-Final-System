@@ -12,13 +12,12 @@ namespace ASP_Final_System.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Clients
+    public partial class Stock
     {
         public int Id { get; set; }
-        public string RNC { get; set; }
-        public string Name { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Category { get; set; }
+        public int Quantity { get; set; }
+        public string Product { get; set; }
+        public string Provider { get; set; }
+        public string TimeStamp { get; set; }
     }
 }

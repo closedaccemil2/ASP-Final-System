@@ -12,5 +12,7 @@ namespace ASP_Final_System.ViewModel
         public IEnumerable<Products> Products { get; set; }
         public IEnumerable<Providers> Providers { get; set; }
         public IEnumerable<Clients> Clients { get; set; }
+        public IEnumerable<Stock> Stocks { get; set; }
+        public IEnumerable<Entries> Entries { get; set; }
     }
 }

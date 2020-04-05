@@ -1,10 +1,10 @@
-﻿@model ASP_Final_System.Models.Clients
+﻿@model ASP_Final_System.Models.Stock
 
 @{
-    ViewBag.Title = "Elimar Cliente";
+    ViewBag.Title = "Eliminar Producto";
 }
 
-<h2>Eliminar Cliente</h2>
+<h2>Eliminar Producto del Inventario</h2>
 <hr />
 <div class="row">
     <div class="col-md-12">
@@ -18,8 +18,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-md-10">
-                                @Html.LabelFor(model => model.RNC, "RNC del Cliente:", htmlAttributes: new { @class = "control-label" })
-                                <input class="form-control" type="text" placeholder="@Html.DisplayFor(model => model.RNC)" readonly>
+                                @Html.LabelFor(stock => stock.Quantity, "Cantidad:", htmlAttributes: new { @class = "control-label" })
+                                <input class="form-control" type="text" placeholder="@Html.DisplayFor(stock => stock.Quantity)" readonly>
                             </div>
                         </div>
                     </div>
@@ -27,8 +27,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-md-10">
-                                @Html.LabelFor(model => model.Name, "Nombre del Cliente:", htmlAttributes: new { @class = "control-label" })
-                                <input class="form-control" type="text" placeholder="@Html.DisplayFor(model => model.Name)" readonly>
+                                @Html.LabelFor(stock => stock.Product, "Nombre del Producto:", htmlAttributes: new { @class = "control-label" })
+                                <input class="form-control" type="text" placeholder="@Html.DisplayFor(stock => stock.Product)" readonly>
                             </div>
                         </div>
                     </div>
@@ -36,8 +36,8 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-md-10">
-                                @Html.LabelFor(model => model.Phone, "Número del Cliente:", htmlAttributes: new { @class = "control-label" })
-                                <input class="form-control" type="text" placeholder="@Html.DisplayFor(model => model.Phone)" readonly>
+                                @Html.LabelFor(stock => stock.Provider, "Nombre del Proveedor:", htmlAttributes: new { @class = "control-label" })
+                                <input class="form-control" type="text" placeholder="@Html.DisplayFor(stock => stock.Provider)" readonly>
                             </div>
                         </div>
                     </div>
@@ -45,20 +45,12 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <div class="col-md-10">
-                                @Html.LabelFor(model => model.Email, "Email del Cliente:", htmlAttributes: new { @class = "control-label" })
-                                <input class="form-control" type="text" placeholder="@Html.DisplayFor(model => model.Email)" readonly>
+                                @Html.LabelFor(stock => stock.TimeStamp, "Fecha de Registro:", htmlAttributes: new { @class = "control-label" })
+                                <input class="form-control" type="text" placeholder="@Html.DisplayFor(stock => stock.TimeStamp)" readonly>
                             </div>
                         </div>
                     </div>
 
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <div class="col-md-10">
-                                @Html.LabelFor(model => model.Category, "Categoría del Cliente:", htmlAttributes: new { @class = "control-label" })
-                                <input class="form-control" type="text" placeholder="@Html.DisplayFor(model => model.Category)" readonly>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <br />
                 <div class="form-group">
@@ -68,7 +60,7 @@
                             @Html.AntiForgeryToken()
 
                             <div class="form-actions">
-                                <a href="\Clients/Index" class="btn btn-outline-secondary">Regresar</a> |
+                                <a href="\Stocks/Index" class="btn btn-outline-secondary">Regresar</a> |
                                 <button type="submit" value="Delete" class="btn btn-outline-danger">Eliminar</button>
                             </div>
                         }
