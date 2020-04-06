@@ -37,7 +37,7 @@ namespace ASP_Final_System.Controllers
                 Database.SaveChanges();
                 using (var Data = new SystemModelContainer())
                 {
-                    Data.AuditLog("Se ha agregado el proveedor: " + providers.Name + " (" + providers.RNC + ").", DateTime.Now);
+                    Data.StoreInfo("Se ha agregado el proveedor: " + providers.Name + " (" + providers.RNC + ").", DateTime.Now);
                     Data.SaveChanges();
                 }
                 return RedirectToAction("Index");

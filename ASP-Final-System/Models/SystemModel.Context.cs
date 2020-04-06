@@ -81,7 +81,7 @@ namespace ASP_Final_System.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("CreateBill", clientNameParameter, productNameParameter, quantityParameter, totalPriceParameter, saleDateParameter);
         }
     
-        public virtual int AuditLog(string desc, Nullable<System.DateTime> date)
+        public virtual int StoreInfo(string desc, Nullable<System.DateTime> date)
         {
             var descParameter = desc != null ?
                 new ObjectParameter("Desc", desc) :
@@ -91,7 +91,7 @@ namespace ASP_Final_System.Models
                 new ObjectParameter("Date", date) :
                 new ObjectParameter("Date", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("AuditLog", descParameter, dateParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("StoreInfo", descParameter, dateParameter);
         }
     }
 }

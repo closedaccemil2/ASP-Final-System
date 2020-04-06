@@ -36,7 +36,7 @@ namespace ASP_Final_System.Controllers
                 Database.SaveChanges();
                 using (var Data = new SystemModelContainer())
                 {
-                    Data.AuditLog("Se ha agregado el producto: " + products.Name + " (#" + products.Id + ").", DateTime.Now);
+                    Data.StoreInfo("Se ha agregado el producto: " + products.Name + " (#" + products.Id + ").", DateTime.Now);
                     Data.SaveChanges();
                 }
                 return RedirectToAction("Index");

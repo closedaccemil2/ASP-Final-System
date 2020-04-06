@@ -71,10 +71,6 @@
           <Property Name="Provider" Type="varchar(max)" Nullable="false" />
           <Property Name="TimeStamp" Type="varchar(max)" Nullable="false" />
         </EntityType>
-        <Function Name="AuditLog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Desc" Type="varchar(max)" Mode="In" />
-          <Parameter Name="Date" Type="datetime" Mode="In" />
-        </Function>
         <Function Name="CreateBill" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ClientName" Type="varchar(max)" Mode="In" />
           <Parameter Name="ProductName" Type="varchar(max)" Mode="In" />
@@ -119,6 +115,10 @@
           <Parameter Name="ProviderName" Type="varchar(max)" Mode="In" />
           <Parameter Name="TimeStamp" Type="datetime" Mode="In" />
         </Function>
+        <Function Name="StoreInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Desc" Type="varchar(max)" Mode="In" />
+          <Parameter Name="Date" Type="datetime" Mode="In" />
+        </Function>
         <EntityContainer Name="SystemModelStoreContainer">
           <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Billing" EntityType="Self.Billing" Schema="dbo" store:Type="Tables" />
@@ -153,7 +153,7 @@
             <Parameter Name="SaleDate" Mode="In" Type="DateTime" />
           </FunctionImport>
           <EntitySet Name="Audits" EntityType="SystemModel.Audit" />
-          <FunctionImport Name="AuditLog">
+          <FunctionImport Name="StoreInfo">
             <Parameter Name="Desc" Mode="In" Type="String" />
             <Parameter Name="Date" Mode="In" Type="DateTime" />
           </FunctionImport>
@@ -316,7 +316,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="AuditLog" FunctionName="SystemModel.Store.AuditLog" />
+          <FunctionImportMapping FunctionImportName="StoreInfo" FunctionName="SystemModel.Store.StoreInfo" />
           </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

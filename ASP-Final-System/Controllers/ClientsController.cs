@@ -13,7 +13,7 @@ namespace ASP_Final_System.Controllers
 {
     public class ClientsController : Controller
     {
-        private SystemModelContainer Database = new SystemModelContainer();
+        private readonly SystemModelContainer Database = new SystemModelContainer();
 
         // GET: Clients
         public ActionResult Index()
@@ -36,7 +36,7 @@ namespace ASP_Final_System.Controllers
                 Database.SaveChanges();
                 using (var Data = new SystemModelContainer())
                 {
-                    Data.AuditLog("Se ha agregado el cliente: " + clients.Name + " (" + clients.RNC + ").", DateTime.Now);
+                    Data.StoreInfo("Se ha agregado el cliente: " + clients.Name + " (" + clients.RNC + ").", DateTime.Now);
                     Data.SaveChanges();
                 }
                 return RedirectToAction("Index");

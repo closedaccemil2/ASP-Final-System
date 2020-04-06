@@ -162,6 +162,12 @@
     <Compile Include="Models\Providers.cs">
       <DependentUpon>SystemModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>SystemModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_helpdiagrams_Result.cs">
+      <DependentUpon>SystemModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Stock.cs">
       <DependentUpon>SystemModel.tt</DependentUpon>
     </Compile>
