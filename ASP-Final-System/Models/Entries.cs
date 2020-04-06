@@ -16,6 +16,6 @@ namespace ASP_Final_System.Models
     {
         public int Id { get; set; }
         public string Transaction_Desc { get; set; }
-        public Nullable<System.DateTime> TimeStamp { get; set; }
+        public string TimeStamp { get; set; }
     }
 }

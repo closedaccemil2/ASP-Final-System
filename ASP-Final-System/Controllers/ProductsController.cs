@@ -13,7 +13,7 @@ namespace ASP_Final_System.Controllers
 {
     public class ProductsController : Controller
     {
-        private SystemModelContainer Database = new SystemModelContainer();
+        private readonly SystemModelContainer Database = new SystemModelContainer();
 
         // GET: Products
         public ActionResult Index()
@@ -34,9 +34,13 @@ namespace ASP_Final_System.Controllers
             {
                 Database.Products.Add(products);
                 Database.SaveChanges();
+                using (var Data = new SystemModelContainer())
+                {
+                    Data.AuditLog("Se ha agregado el producto: " + products.Name + " (#" + products.Id + ").", DateTime.Now);
+                    Data.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
-
             return View(products);
         }
 

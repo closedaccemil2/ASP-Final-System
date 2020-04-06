@@ -12,10 +12,13 @@ namespace ASP_Final_System.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Audit
+    public partial class Billing
     {
         public int Id { get; set; }
-        public string Description { get; set; }
-        public Nullable<System.DateTime> LogDate { get; set; }
+        public string ClientName { get; set; }
+        public string ProductName { get; set; }
+        public int Quantity { get; set; }
+        public string TotalPrice { get; set; }
+        public Nullable<System.DateTime> SaleDate { get; set; }
     }
 }

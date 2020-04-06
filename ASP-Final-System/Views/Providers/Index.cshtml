@@ -91,9 +91,8 @@
                             foreach (var audit in Model.Audits)
                             {
                                 <li class="list-group-item bg-light">
-                                    @Html.DisplayFor(modelItem => audit.Activity)
-                                    @Html.DisplayFor(modelItem => audit.ElementID)
-                                    @Html.DisplayFor(modelItem => audit.TimeStamp)
+                                    @Html.DisplayFor(modelItem => audit.Description)
+                                    @Html.DisplayFor(modelItem => audit.LogDate)
                                 </li>
                             }
                         }

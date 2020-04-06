@@ -1,0 +1,138 @@
+﻿@model ASP_Final_System.ViewModel.SystemModels
+
+@{
+    ViewBag.Title = "Facturación";
+}
+
+<div class="module-title">
+    <h2>
+        Módulo de Procesos - <span class="section-title">@ViewBag.Title</span>
+    </h2>
+    <div class="dropdown">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Facturación
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="\Stocks/Index">Mercancía</a>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container">
+    <div class="card bg-light">
+        <div class="card-body">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                ASP_Final_System.Models.Billing billing = new ASP_Final_System.Models.Billing();
+                <div class="form-horizontal">
+                    <h4 class="text-center">Facturación de Productos</h4>
+                    <hr />
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => billing.ClientName, "Nombre del Cliente:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(model => billing.ClientName, ViewBag.custs as SelectList, new { @class = "form-control", @id = "clientType" })
+                                    @Html.ValidationMessageFor(model => billing.ClientName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => billing.ProductName, "Producto:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.DropDownListFor(model => billing.ProductName, ViewBag.prods as SelectList, new { @class = "form-control", @id = "productPrice" })
+                                    @Html.ValidationMessageFor(model => billing.ProductName, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => billing.Quantity, "Cantidad:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => billing.Quantity, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                        @required = "required",
+                                        @id = "productQuantity",
+                                        @onchange = "CalculateTotal()",
+                                        }
+                                    })
+                                    @Html.ValidationMessageFor(model => billing.Quantity, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="col-sm">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => billing.TotalPrice, "Precio Total:", htmlAttributes: new { @class = "control-label" })
+                                    @Html.EditorFor(model => billing.TotalPrice, new
+                                    {
+                                        htmlAttributes = new
+                                        {
+                                            @class = "form-control",
+                                        @required = "required",
+                                        @readonly = "required",
+                                        @id = "priceHolder"
+                                        }
+                                    })
+                                    @Html.ValidationMessageFor(model => billing.TotalPrice, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Facturar" class="btn btn-outline-primary" />
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<br />
+<div class="container">
+    <div class="card">
+        <table class="table table-striped col-md">
+            <thead class="card-header">
+                <tr>
+                    <th scope="col">Nombre del Cliente</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio Total</th>
+                    <th scope="col">Fecha de Venta</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model.Billing)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ClientName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ProductName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Quantity)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TotalPrice)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.SaleDate)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

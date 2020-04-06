@@ -13,7 +13,7 @@ namespace ASP_Final_System.Controllers
 {
     public class ProvidersController : Controller
     {
-        private SystemModelContainer Database = new SystemModelContainer();
+        private readonly SystemModelContainer Database = new SystemModelContainer();
 
         // GET: Providers
         public ActionResult Index()
@@ -35,6 +35,11 @@ namespace ASP_Final_System.Controllers
             {
                 Database.Providers.Add(providers);
                 Database.SaveChanges();
+                using (var Data = new SystemModelContainer())
+                {
+                    Data.AuditLog("Se ha agregado el proveedor: " + providers.Name + " (" + providers.RNC + ").", DateTime.Now);
+                    Data.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
 

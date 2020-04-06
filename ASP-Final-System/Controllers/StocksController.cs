@@ -13,7 +13,7 @@ namespace ASP_Final_System.Controllers
 {
     public class StocksController : Controller
     {
-        private SystemModelContainer Database = new SystemModelContainer();
+        private readonly SystemModelContainer Database = new SystemModelContainer();
 
         // GET: Stocks
         public ActionResult Index()
@@ -23,6 +23,7 @@ namespace ASP_Final_System.Controllers
                 Stocks = Database.Stocks.ToList(),
                 Products = Database.Products.ToList(),
                 Providers = Database.Providers.ToList(),
+                Billing = Database.Billings.ToList(),
                 Audits = Database.Audits.ToList()
             };
             ViewBag.prods = new SelectList(Database.Products, "Name", "Name");
@@ -101,6 +102,33 @@ namespace ASP_Final_System.Controllers
             Database.Stocks.Remove(stock);
             Database.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Billing()
+        {
+            var Data = new SystemModels
+            {
+                Billing = Database.Billings.ToList(),
+                Clients = Database.Clients.ToList(),
+                Products = Database.Products.ToList(),
+            };
+            ViewBag.custs = new SelectList(Database.Clients, "Category", "Name");
+            ViewBag.prods = new SelectList(Database.Products, "Price", "Name");
+            return View(Data);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Billing(Billing billing)
+        {
+            if (ModelState.IsValid)
+            {
+                using (var Data = new SystemModelContainer())
+                {
+                    Data.CreateBill(billing.ClientName, billing.ProductName, billing.Quantity, billing.TotalPrice, DateTime.Now);
+                    Data.SaveChanges();
+                }
+            }
+            return RedirectToAction("Billing");
         }
 
         protected override void Dispose(bool disposing)

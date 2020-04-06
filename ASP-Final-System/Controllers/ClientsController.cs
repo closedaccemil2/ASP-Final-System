@@ -34,6 +34,11 @@ namespace ASP_Final_System.Controllers
             {
                 Database.Clients.Add(clients);
                 Database.SaveChanges();
+                using (var Data = new SystemModelContainer())
+                {
+                    Data.AuditLog("Se ha agregado el cliente: " + clients.Name + " (" + clients.RNC + ").", DateTime.Now);
+                    Data.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
 
