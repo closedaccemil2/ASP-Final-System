@@ -112,8 +112,8 @@ namespace ASP_Final_System.Controllers
                 Clients = Database.Clients.ToList(),
                 Products = Database.Products.ToList(),
             };
-            ViewBag.custs = new SelectList(Database.Clients, "Category", "Name");
-            ViewBag.prods = new SelectList(Database.Products, "Price", "Name");
+            ViewBag.custs = new SelectList(Database.Clients, "Category", "Name", "Name");
+            ViewBag.prods = new SelectList(Database.Products, "Price", "Name", "Name");
             return View(Data);
         }
         [HttpPost]

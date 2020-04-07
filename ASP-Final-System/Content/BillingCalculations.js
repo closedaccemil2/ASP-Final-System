@@ -22,4 +22,7 @@ function CalculateTotal() {
             document.getElementById("priceHolder").value = totalPrice;
             break
     }
+    var e = document.getElementById("productPrice");
+    var strUser = e.options[e.selectedIndex].value;
+    console.log('===========> ' + strUser)
 }
