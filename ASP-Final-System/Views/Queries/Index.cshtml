@@ -1,0 +1,108 @@
+﻿@model ASP_Final_System.ViewModel.SystemModels
+
+@{
+    ViewBag.Title = "Consulta y Filtrado";
+}
+
+<div class="module-title">
+    <h2>
+        Módulo de Consultas - <span class="section-title">@ViewBag.Title</span>
+    </h2>
+</div>
+<br />
+<form class="form-inline">
+    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe, Premium...">
+    <button type="submit" class="btn btn-outline-primary mb-2">Buscar</button>
+</form>
+<hr />
+
+<div class="accordion" id="accordionExample">
+    <div class="card">
+        <div class="card-header" id="headingOne">
+            <h2 class="mb-0">
+                <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Productos
+                </button>
+            </h2>
+        </div>
+
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+                <h3>Consulta de <span class="section-title">Productos</span></h3>
+                <br />
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="prodname-tab" data-toggle="tab" href="#prodname" role="tab" aria-controls="prodname" aria-selected="true">Por Nombre</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="prodname" role="tabpanel" aria-labelledby="prodname-tab">
+                        @{ Html.RenderAction("FilterProduct"); }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h2 class="mb-0">
+                <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Clientes
+                </button>
+            </h2>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body">
+                <h3>Consulta de <span class="section-title">Clientes</span></h3>
+                <br />
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="custname-tab" data-toggle="tab" href="#custname" role="tab" aria-controls="custname" aria-selected="true">Por Nombre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="custcategory-tab" data-toggle="tab" href="#custcategory" role="tab" aria-controls="custcategory" aria-selected="false">Por Categoría</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="custname" role="tabpanel" aria-labelledby="custname-tab">
+                        @{ Html.RenderAction("ClientName"); }
+                    </div>
+                    <div class="tab-pane fade" id="custcategory" role="tabpanel" aria-labelledby="custcategory-tab">
+                        @{ Html.RenderAction("ClientCategory"); }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-header" id="headingThree">
+            <h2 class="mb-0">
+                <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    Proveedores
+                </button>
+            </h2>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+                <h3>Consulta de <span class="section-title">Proveedores</span></h3>
+                <br />
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="provname-tab" data-toggle="tab" href="#provname" role="tab" aria-controls="provname" aria-selected="true">Por Nombre</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="provemail-tab" data-toggle="tab" href="#provemail" role="tab" aria-controls="provemail" aria-selected="false">Por Email</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="provname" role="tabpanel" aria-labelledby="provname-tab">
+                        @{ Html.RenderAction("ProviderName"); }
+                    </div>
+                    <div class="tab-pane fade" id="provemail" role="tabpanel" aria-labelledby="provemail-tab">
+                        @{ Html.RenderAction("ProviderEmail"); }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -89,3 +89,7 @@ a:hover {
     overflow: hidden;
     overflow-y: scroll;
 }
+
+.hide-from-view {
+    display: none;
+}

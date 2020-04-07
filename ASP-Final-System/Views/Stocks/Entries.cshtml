@@ -24,8 +24,9 @@
         <table class="table table-striped col-md">
             <thead class="card-header">
                 <tr>
-                    <th scope="col">ID Transacción</th>
-                    <th scope="col">Descripción</th>
+                    <th scope="col">ID Producto</th>
+                    <th scope="col">Producto</th>
+                    <th scope="col">Proveedor</th>
                     <th scope="col">Fecha de Registro</th>
                 </tr>
             </thead>
@@ -38,7 +39,10 @@
                                 @Html.DisplayFor(modelItem => item.Id)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.Transaction_Desc)
+                                @Html.DisplayFor(modelItem => item.Product)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Provider)
                             </td>
                             <td>
                                 @Html.DisplayFor(modelItem => item.TimeStamp)

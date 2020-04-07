@@ -15,7 +15,8 @@ namespace ASP_Final_System.Models
     public partial class Entries
     {
         public int Id { get; set; }
-        public string Transaction_Desc { get; set; }
+        public string Product { get; set; }
+        public string Provider { get; set; }
         public string TimeStamp { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿// (Not Official Method) Billing Calculations via DOM Manipulations
 
-function CalculateTotal(sel) {
+function CalculateTotal() {
     // Getting the fields values
     let productPrice = document.getElementById('productPrice').value
     let clientType = document.getElementById('clientType').value

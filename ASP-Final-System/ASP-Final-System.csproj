@@ -140,6 +140,7 @@
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ProvidersController.cs" />
+    <Compile Include="Controllers\QueriesController.cs" />
     <Compile Include="Controllers\StocksController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -197,7 +198,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\desk-background.jpg" />
-    <Content Include="Content\BillingCalculations.js" />
+    <Content Include="Content\SystemFeatures.js" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -368,6 +369,12 @@
     <Content Include="Views\Stocks\Index.cshtml" />
     <Content Include="Views\Stocks\Billing.cshtml" />
     <Content Include="Views\Stocks\Entries.cshtml" />
+    <Content Include="Views\Queries\Index.cshtml" />
+    <Content Include="Views\Queries\ClientName.cshtml" />
+    <Content Include="Views\Queries\ClientCategory.cshtml" />
+    <Content Include="Views\Queries\FilterProduct.cshtml" />
+    <Content Include="Views\Queries\ProviderName.cshtml" />
+    <Content Include="Views\Queries\ProviderEmail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

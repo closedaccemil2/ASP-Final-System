@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ASP_Final_System.Models.Providers>
+
+<div class="container-md">
+        <br />
+        <table class="table table-striped">
+            <tr>
+                <th>
+                    RNC
+                </th>
+                <th>
+                    Nombre
+                </th>
+                <th>
+                    Teléfono
+                </th>
+                <th>
+                    Email
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RNC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                </tr>
+            }
+
+     </table>
+</div>

@@ -16,7 +16,5 @@ namespace ASP_Final_System.ViewModel
         public IEnumerable<Stock> Stocks { get; set; }
         public IEnumerable<Entries> Entries { get; set; }
         public IEnumerable<Billing> Billing { get; set; }
-        public int SelectedProductId { get; set; }
-        public SelectList ProductsTemplate { get; set; }
     }
 }

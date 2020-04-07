@@ -9,9 +9,9 @@
         <EntityTypeShape EntityType="SystemModel.Providers" Width="1.5" PointX="3.375" PointY="1.25" />
         <EntityTypeShape EntityType="SystemModel.Clients" Width="1.5" PointX="5.375" PointY="1.25" />
         <EntityTypeShape EntityType="SystemModel.Stock" Width="1.5" PointX="3.375" PointY="3.625" />
-        <EntityTypeShape EntityType="SystemModel.Entries" Width="1.5" PointX="1.375" PointY="3.25" />
         <EntityTypeShape EntityType="SystemModel.Billing" Width="1.5" PointX="5.375" PointY="3.75" />
         <EntityTypeShape EntityType="SystemModel.Audit" Width="1.5" PointX="7.125" PointY="1.25" />
+        <EntityTypeShape EntityType="SystemModel.Entries" Width="1.5" PointX="1.375" PointY="3.375" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

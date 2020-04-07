@@ -40,7 +40,8 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Transaction_Desc" Type="varchar(max)" />
+          <Property Name="Product" Type="varchar(max)" />
+          <Property Name="Provider" Type="varchar(max)" />
           <Property Name="TimeStamp" Type="varchar(max)" />
         </EntityType>
         <EntityType Name="Products">
@@ -143,7 +144,6 @@
             <Parameter Name="ProviderName" Mode="In" Type="String" />
             <Parameter Name="TimeStamp" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <EntitySet Name="Entries1" EntityType="SystemModel.Entries" />
           <EntitySet Name="Billings" EntityType="SystemModel.Billing" />
           <FunctionImport Name="CreateBill">
             <Parameter Name="ClientName" Mode="In" Type="String" />
@@ -157,6 +157,7 @@
             <Parameter Name="Desc" Mode="In" Type="String" />
             <Parameter Name="Date" Mode="In" Type="DateTime" />
           </FunctionImport>
+          <EntitySet Name="Entries1" EntityType="SystemModel.Entries" />
           </EntityContainer>
         <EntityType Name="Products">
           <Key>
@@ -208,14 +209,6 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <EntityType Name="Entries">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Transaction_Desc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="TimeStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="Billing">
           <Key>
             <PropertyRef Name="Id" />
@@ -234,6 +227,15 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="LogDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Entries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Product" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Provider" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="TimeStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -285,15 +287,6 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="StockCheck" FunctionName="SystemModel.Store.StockCheck" />
-          <EntitySetMapping Name="Entries1">
-            <EntityTypeMapping TypeName="SystemModel.Entries">
-              <MappingFragment StoreEntitySet="Entries">
-                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
-                <ScalarProperty Name="Transaction_Desc" ColumnName="Transaction_Desc" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Billings">
             <EntityTypeMapping TypeName="SystemModel.Billing">
               <MappingFragment StoreEntitySet="Billing">
@@ -317,6 +310,16 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="StoreInfo" FunctionName="SystemModel.Store.StoreInfo" />
+          <EntitySetMapping Name="Entries1">
+            <EntityTypeMapping TypeName="SystemModel.Entries">
+              <MappingFragment StoreEntitySet="Entries">
+                <ScalarProperty Name="TimeStamp" ColumnName="TimeStamp" />
+                <ScalarProperty Name="Provider" ColumnName="Provider" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>
