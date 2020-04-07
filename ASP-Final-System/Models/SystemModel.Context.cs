@@ -31,7 +31,7 @@ namespace ASP_Final_System.Models
         public virtual DbSet<Providers> Providers { get; set; }
         public virtual DbSet<Clients> Clients { get; set; }
         public virtual DbSet<Stock> Stocks { get; set; }
-        public virtual DbSet<Entries> Entries1 { get; set; }
+        public virtual DbSet<Entries> Entries { get; set; }
         public virtual DbSet<Billing> Billings { get; set; }
         public virtual DbSet<Audit> Audits { get; set; }
     

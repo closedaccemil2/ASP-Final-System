@@ -112,23 +112,32 @@ namespace ASP_Final_System.Controllers
                 Clients = Database.Clients.ToList(),
                 Products = Database.Products.ToList(),
             };
-            ViewBag.custs = new SelectList(Database.Clients, "Category", "Name", "Name");
-            ViewBag.prods = new SelectList(Database.Products, "Price", "Name", "Name");
+            ViewBag.custs = new SelectList(Database.Clients, "Category", "Name");
+            ViewBag.prods = new SelectList(Database.Products, "Price", "Name");
             return View(Data);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Billing(Billing billing)
+        public ActionResult Billing(Billing billing, string ClientName, string ProductName)
         {
             if (ModelState.IsValid)
             {
                 using (var Data = new SystemModelContainer())
                 {
-                    Data.CreateBill(billing.ClientName, billing.ProductName, billing.Quantity, billing.TotalPrice, DateTime.Now);
+                    Data.CreateBill(ClientName, ProductName, billing.Quantity, billing.TotalPrice, DateTime.Now);
                     Data.SaveChanges();
                 }
             }
             return RedirectToAction("Billing");
+        }
+
+        public ActionResult Entries()
+        {
+            var Data = new SystemModels
+            {
+                Entries = Database.Entries.ToList(),
+            };
+            return View(Data);
         }
 
         protected override void Dispose(bool disposing)

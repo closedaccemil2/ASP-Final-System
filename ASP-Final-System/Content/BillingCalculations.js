@@ -1,6 +1,6 @@
 ﻿// (Not Official Method) Billing Calculations via DOM Manipulations
 
-function CalculateTotal() {
+function CalculateTotal(sel) {
     // Getting the fields values
     let productPrice = document.getElementById('productPrice').value
     let clientType = document.getElementById('clientType').value
@@ -22,7 +22,13 @@ function CalculateTotal() {
             document.getElementById("priceHolder").value = totalPrice;
             break
     }
+
+    var a = document.getElementById("clientType");
+    var cust = a.options[a.selectedIndex].text;
+    document.getElementById("ClientName").value = cust
+
     var e = document.getElementById("productPrice");
-    var strUser = e.options[e.selectedIndex].value;
-    console.log('===========> ' + strUser)
+    var prod = e.options[e.selectedIndex].text;
+    document.getElementById("ProductName").value = prod
+
 }

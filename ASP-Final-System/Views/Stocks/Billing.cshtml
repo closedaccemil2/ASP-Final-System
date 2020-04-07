@@ -14,6 +14,7 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="\Stocks/Index">Mercancía</a>
+            <a class="dropdown-item" href="\Stocks/Entries">Entradas</a>
         </div>
     </div>
 </div>
@@ -37,6 +38,7 @@
                                     @Html.LabelFor(model => billing.ClientName, "Nombre del Cliente:", htmlAttributes: new { @class = "control-label" })
                                     @Html.DropDownListFor(model => billing.ClientName, ViewBag.custs as SelectList, new { @class = "form-control", @id = "clientType" })
                                     @Html.ValidationMessageFor(model => billing.ClientName, "", new { @class = "text-danger" })
+                                    @Html.Hidden("ClientName")
                                 </div>
                             </div>
                             <div class="col-sm">
@@ -44,6 +46,7 @@
                                     @Html.LabelFor(model => billing.ProductName, "Producto:", htmlAttributes: new { @class = "control-label" })
                                     @Html.DropDownListFor(model => billing.ProductName, ViewBag.prods as SelectList, new { @class = "form-control", @id = "productPrice" })
                                     @Html.ValidationMessageFor(model => billing.ProductName, "", new { @class = "text-danger" })
+                                    @Html.Hidden("ProductName")
                                 </div>
                             </div>
                             <div class="col-sm">
@@ -54,9 +57,9 @@
                                         htmlAttributes = new
                                         {
                                             @class = "form-control",
-                                        @required = "required",
-                                        @id = "productQuantity",
-                                        @onchange = "CalculateTotal()",
+                                            @required = "required",
+                                            @id = "productQuantity",
+                                            @onchange = "CalculateTotal()",
                                         }
                                     })
                                     @Html.ValidationMessageFor(model => billing.Quantity, "", new { @class = "text-danger" })
@@ -70,9 +73,9 @@
                                         htmlAttributes = new
                                         {
                                             @class = "form-control",
-                                        @required = "required",
-                                        @readonly = "required",
-                                        @id = "priceHolder"
+                                            @required = "required",
+                                            @readonly = "required",
+                                            @id = "priceHolder"
                                         }
                                     })
                                     @Html.ValidationMessageFor(model => billing.TotalPrice, "", new { @class = "text-danger" })

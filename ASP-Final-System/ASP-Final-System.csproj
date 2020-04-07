@@ -325,6 +325,13 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="SQL\Billing_Update_Stock.sql" />
+    <Content Include="SQL\CreateBill.sql" />
+    <Content Include="SQL\Entries_Data_Stock_Insert.sql" />
+    <Content Include="SQL\Entries_Data_Stock_Update.sql" />
+    <Content Include="SQL\StockCheck.sql" />
+    <Content Include="SQL\StoreInfo.sql" />
+    <Content Include="SQL\System-Queries.sql" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -360,6 +367,7 @@
     <Content Include="Views\Stocks\Edit.cshtml" />
     <Content Include="Views\Stocks\Index.cshtml" />
     <Content Include="Views\Stocks\Billing.cshtml" />
+    <Content Include="Views\Stocks\Entries.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

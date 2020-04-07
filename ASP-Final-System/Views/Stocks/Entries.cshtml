@@ -1,0 +1,52 @@
+﻿@model ASP_Final_System.ViewModel.SystemModels
+
+@{
+    ViewBag.Title = "Registro de Entradas y Modificaciones";
+}
+
+<div class="module-title">
+    <h2>
+        Módulo de Procesos - <span class="section-title">@ViewBag.Title</span>
+    </h2>
+    <div class="dropdown">
+        <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Entradas
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="\Stocks/Index">Mercancía</a>
+            <a class="dropdown-item" href="\Stocks/Billing">Facturación</a>
+        </div>
+    </div>
+</div>
+<br />
+<div class="container">
+    <div class="card">
+        <table class="table table-striped col-md">
+            <thead class="card-header">
+                <tr>
+                    <th scope="col">ID Transacción</th>
+                    <th scope="col">Descripción</th>
+                    <th scope="col">Fecha de Registro</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    foreach (var item in Model.Entries)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Transaction_Desc)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.TimeStamp)
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
