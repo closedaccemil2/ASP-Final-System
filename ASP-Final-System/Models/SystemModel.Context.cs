@@ -33,7 +33,7 @@ namespace ASP_Final_System.Models
         public virtual DbSet<Stock> Stocks { get; set; }
         public virtual DbSet<Billing> Billings { get; set; }
         public virtual DbSet<Audit> Audits { get; set; }
-        public virtual DbSet<Entries> Entries1 { get; set; }
+        public virtual DbSet<Entries> Entries { get; set; }
     
         public virtual int StockCheck(Nullable<int> quantity, string productName, string providerName, Nullable<System.DateTime> timeStamp)
         {

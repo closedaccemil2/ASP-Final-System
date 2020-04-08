@@ -135,7 +135,7 @@ namespace ASP_Final_System.Controllers
         {
             var Data = new SystemModels
             {
-                Entries = Database.Entries1.ToList(),
+                Entries = Database.Entries.ToList(),
             };
             return View(Data);
         }

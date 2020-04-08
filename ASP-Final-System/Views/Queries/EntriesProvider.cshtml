@@ -1,0 +1,49 @@
+﻿@model IEnumerable<ASP_Final_System.Models.Entries>
+
+<div class="container-md">
+    <br />
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-sm alert alert-secondary text-center" style="margin: 10px">
+                Total de Registros: @ViewBag.pvCount
+            </div>
+            <div class="col-sm alert alert-secondary text-center" style="margin: 10px">
+                Sumatoria: @ViewBag.pvSum
+            </div>
+            <div class="col-sm alert alert-secondary text-center" style="margin: 10px">
+                Promedio: @ViewBag.pvAvg
+            </div>
+        </div>
+    </div>
+    <br />
+    <table class="table table-striped">
+        <tr>
+            <th>
+                Producto
+            </th>
+            <th>
+                Proveedor
+            </th>
+            <th>
+                Fecha de Registro
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Product)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Provider)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimeStamp)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+

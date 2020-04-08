@@ -375,6 +375,11 @@
     <Content Include="Views\Queries\FilterProduct.cshtml" />
     <Content Include="Views\Queries\ProviderName.cshtml" />
     <Content Include="Views\Queries\ProviderEmail.cshtml" />
+    <Content Include="Views\Queries\EntriesProduct.cshtml" />
+    <Content Include="Views\Queries\EntriesDate.cshtml" />
+    <Content Include="Views\Queries\EntriesProvider.cshtml" />
+    <Content Include="Views\Queries\BillingDate.cshtml" />
+    <Content Include="Views\Queries\BillingClient.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

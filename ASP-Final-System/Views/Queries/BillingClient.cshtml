@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ASP_Final_System.Models.Billing>
+
+<div class="container-md">
+    <br />
+    <div class="container">
+        <div class="row justify-content-between">
+            <div class="col-sm alert alert-secondary text-center" style="margin: 10px">
+                Registros: @ViewBag.bcCount
+            </div>
+            <div class="col-sm alert alert-secondary text-center" style="margin: 10px">
+                Sumatoria: @ViewBag.bcSum
+            </div>
+            <div class="col-sm alert alert-secondary text-center" style="margin: 10px">
+                Promedio: @ViewBag.bcAvg
+            </div>
+            <div class="col-sm alert alert-secondary text-center" style="margin: 10px">
+                Mínimo: @ViewBag.bcMin
+            </div>
+            <div class="col-sm alert alert-secondary text-center" style="margin: 10px">
+                Máximo: @ViewBag.bcMax
+            </div>
+        </div>
+    </div>
+    <br />
+    <table class="table  table-striped">
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Producto
+            </th>
+            <th>
+                Cantidad
+            </th>
+            <th>
+                Precio Total
+            </th>
+            <th>
+                Fecha de Venta
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ClientName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SaleDate)
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

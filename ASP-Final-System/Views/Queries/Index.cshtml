@@ -104,5 +104,73 @@
                 </div>
             </div>
         </div>
+        <div class="card">
+            <div class="card-header" id="headingFour">
+                <h2 class="mb-0">
+                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                        Entradas
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                <div class="card-body">
+                    <h3>Consulta de <span class="section-title">Entradas</span></h3>
+                    <br />
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="entriesprod-tab" data-toggle="tab" href="#entriesprod" role="tab" aria-controls="entriesprod" aria-selected="true">Por Producto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="entriesdate-tab" data-toggle="tab" href="#entriesdate" role="tab" aria-controls="entriesdate" aria-selected="false">Por Fecha</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="entriesprov-tab" data-toggle="tab" href="#entriesprov" role="tab" aria-controls="entriesprov" aria-selected="false">Por Proveedor</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="entriesprod" role="tabpanel" aria-labelledby="entriesprod-tab">
+                            @{ Html.RenderAction("EntriesProduct"); }
+                        </div>
+                        <div class="tab-pane fade" id="entriesdate" role="tabpanel" aria-labelledby="entriesdate-tab">
+                            @{ Html.RenderAction("EntriesDate"); }
+                        </div>
+                        <div class="tab-pane fade" id="entriesprov" role="tabpanel" aria-labelledby="entriesprov-tab">
+                            @{ Html.RenderAction("EntriesProvider"); }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="headingFive">
+                <h2 class="mb-0">
+                    <button class="btn collapsed" type="button" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        Facturación
+                    </button>
+                </h2>
+            </div>
+            <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                <div class="card-body">
+                    <h3>Consulta de <span class="section-title">Facturación</span></h3>
+                    <br />
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="billdate-tab" data-toggle="tab" href="#billdate" role="tab" aria-controls="billdate" aria-selected="true">Por Fecha</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="billcust-tab" data-toggle="tab" href="#billcust" role="tab" aria-controls="billcust" aria-selected="false">Por Cliente</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="billdate" role="tabpanel" aria-labelledby="entriesprod-tab">
+                            @{ Html.RenderAction("BillingDate"); }
+                        </div>
+                        <div class="tab-pane fade" id="billcust" role="tabpanel" aria-labelledby="billcust-tab">
+                            @{ Html.RenderAction("BillingClient"); }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
