@@ -10,10 +10,14 @@
     </h2>
 </div>
 <br />
-<form class="form-inline">
-    <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2" placeholder="Jane Doe, Premium...">
-    <button type="submit" class="btn btn-outline-primary mb-2">Buscar</button>
-</form>
+<div class="container">
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                @Html.ActionLink("Imprimir", "PrintAll", new { @class = "btn btn-outline-primary mb-2"  })
+            </div>
+        </div>
+</div>
+
 <hr />
 
 <div class="accordion" id="accordionExample">

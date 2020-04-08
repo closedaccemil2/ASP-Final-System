@@ -31,4 +31,12 @@ function CalculateTotal() {
     var prod = e.options[e.selectedIndex].text;
     document.getElementById("ProductName").value = prod
 
+    var e = document.getElementById("printPartial");
+    var prod = e.options[e.selectedIndex].text;
+    document.getElementById("Table").value = prod
+
 }
+
+$(document).ready(function () {
+    document.querySelector('#collapsed').className = "collapse";
+});

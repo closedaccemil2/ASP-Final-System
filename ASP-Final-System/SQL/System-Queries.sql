@@ -52,7 +52,8 @@ Values ('Rama de Jardín',  80)
 -- Entries Table Create -- 
 Create Table Entries (
 	Id int Not Null Identity(1,1),
-	Transaction_Desc varchar(Max),
+	Product varchar(Max),
+	Provider varchar(Max),
 	TimeStamp varchar(Max),
 	Primary Key (Id)
 );

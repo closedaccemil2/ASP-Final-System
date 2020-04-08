@@ -33,15 +33,13 @@ BEGIN
 	DECLARE 
 		@e varchar(Max), 
 		@prod varchar(Max), 
-		@quan varchar(Max), 
-		@time varchar(Max)
-	Select @prod = Product, @quan = Quantity, @time = TimeStamp from inserted
+		@quan varchar(Max)
+	Select @prod = Product, @quan = Quantity from inserted
 
     -- Insert statements for trigger here
 	SET @e = 'Modificación al Producto: ' + 
 			@prod + ' | Cantidad: +' + 
-			@quan + ' | Fecha de Modificación: ' +
-			@time;
+			@quan;
 	Insert Into Entries (Transaction_Desc, TimeStamp)
 	Values (@e, CURRENT_TIMESTAMP)
 END

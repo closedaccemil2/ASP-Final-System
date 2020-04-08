@@ -1,5 +1,6 @@
 ﻿using ASP_Final_System.Models;
 using ASP_Final_System.ViewModel;
+using Rotativa;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,11 @@ namespace ASP_Final_System.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public ActionResult PrintAll()
+        {
+            return new ActionAsPdf("Index");
         }
 
         public PartialViewResult FilterProduct()

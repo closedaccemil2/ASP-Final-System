@@ -30,20 +30,13 @@ BEGIN
 	-- interfering with SELECT statements.
 	SET NOCOUNT ON;
 	DECLARE 
-		@e varchar(Max), 
 		@prod varchar(Max), 
-		@quan varchar(Max), 
-		@prov varchar(Max),
-		@time varchar(Max)
-	Select @prod = Product, @quan = Quantity, @prov = Provider, @time = TimeStamp from inserted
-
+		@time varchar(Max), 
+		@prov varchar(Max)
+	Select @prod = Product, @time = TimeStamp, @prov = Provider from inserted
     -- Insert statements for trigger here
-	SET @e = 'Nuevo Producto: ' + 
-			@prod + ' | Cantidad: ' + 
-			@quan + ' | Proveedor: ' + 
-			@prov + ' | Fecha de Registro: ' +
-			@time;
-	Insert Into Entries (Transaction_Desc, TimeStamp)
-	Values (@e, CURRENT_TIMESTAMP)
+
+	Insert Into Entries (Product ,Provider, TimeStamp)
+	Values (@prod, @prov, @time)
 END
 GO

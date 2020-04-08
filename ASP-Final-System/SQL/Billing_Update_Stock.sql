@@ -29,8 +29,6 @@ AS
 BEGIN
 	-- SET NOCOUNT ON added to prevent extra result sets from
 	-- interfering with SELECT statements.
-	--ALTER TABLE Stock DISABLE TRIGGER Entries_Data_Stock
-	ALTER TABLE Stock DISABLE TRIGGER Entries_Update_Stock
 	SET NOCOUNT ON;
 	DECLARE 
 		@quan varchar(Max), 
@@ -39,7 +37,5 @@ BEGIN
 	Select @quan = Quantity, @prod = ProductName, @time = SaleDate from inserted
 
     -- Insert statements for trigger here
-	--ALTER TABLE Stock ENABLE TRIGGER Entries_Data_Stock
-	ALTER TABLE Stock ENABLE TRIGGER Entries_Update_Stock
 END
 GO
